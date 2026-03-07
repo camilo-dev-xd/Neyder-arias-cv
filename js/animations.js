@@ -72,7 +72,10 @@ class ParticleSystem {
     }
 
     init() {
-        const count = Math.floor((this.canvas.width * this.canvas.height) / 15000);
+        // Reducir densidad de partículas en móviles para mejorar rendimiento
+        const divisor = window.innerWidth < 768 ? 35000 : 15000;
+        const count = Math.floor((this.canvas.width * this.canvas.height) / divisor);
+        
         for (let i = 0; i < count; i++) {
             this.particles.push(this.createParticle());
         }
@@ -108,17 +111,19 @@ class ParticleSystem {
             this.ctx.fill();
         });
 
-        // Conectar partículas cercanas con líneas
+        // Conectar partículas cercanas con líneas (reducido en móviles)
+        const connectionDistance = window.innerWidth < 768 ? 70 : 100;
+
         this.particles.forEach((p1, i) => {
             this.particles.slice(i + 1).forEach(p2 => {
                 const dx = p1.x - p2.x;
                 const dy = p1.y - p2.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 100) {
+                if (dist < connectionDistance) {
                     this.ctx.beginPath();
                     this.ctx.moveTo(p1.x, p1.y);
                     this.ctx.lineTo(p2.x, p2.y);
-                    this.ctx.strokeStyle = `rgba(100, 149, 237, ${0.15 * (1 - dist / 100)})`;
+                    this.ctx.strokeStyle = `rgba(100, 149, 237, ${0.15 * (1 - dist / connectionDistance)})`;
                     this.ctx.lineWidth = 0.5;
                     this.ctx.stroke();
                 }
