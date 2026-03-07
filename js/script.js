@@ -6,7 +6,7 @@ const projects = [
         title: "Gastro Coffee",
         category: "web",
         description: "Sitio web funcional para restaurante/café con menú interactivo y reservas",
-        image: "assets/images/gastro-coffee.jpg",
+        image: "assets/fotos/gastro-coffe_foto.png",
         link: "#"
     },
     {
@@ -29,10 +29,10 @@ const projects = [
     },
     {
         id: 4,
-        title: "Vídeo Corporativo - Autos",
+        title: "Vídeo Edidt - Autos",
         category: "video",
-        description: "Vídeo promocional para empresa automotriz con edición profesional",
-        image: "assets/images/video-autos.jpg",
+        description: "Vídeo profesional editado al ritmo de la música",
+        image: "assets/fotos/auto_foto.png",
         link: "https://drive.google.com/file/d/1HP4zTBywxDhI0bx_vV0B1qnw28XxQysj/view?usp=sharing"
     },
 
@@ -50,15 +50,15 @@ const projects = [
         title: "Identidad Visual - Gastro Coffee",
         category: "design",
         description: "Diseño de marca para restaurante café con paleta de colores elegante",
-        image: "assets/images/gastro-coffee-identity.jpg",
-        link: "#"
+        image: "assets/fotos/gastro-coffe_foto.png",
+        link: "https://drive.google.com/file/d/1hZ5N8aQ8O6qDdWqB2nkXzDoZzc3WAj0n/view?usp=drive_link"
     },
     {
         id: 7,
         title: "Identidad Visual - Badminteam Siachoque",
         category: "design",
         description: "Diseño completo de identidad visual incluyendo logo, paleta de colores y guías de marca",
-        image: "assets/images/badminteam-identity.jpg",
+        image: "assets/fotos/badminteam_foto.png",
         link: "https://drive.google.com/file/d/12xyWe7vK4CJhhCYM8QgtqaSSRS2vjaV4/view?usp=drive_link"
     },
     {
@@ -66,15 +66,15 @@ const projects = [
         title: "Flyers - Autolavados",
         category: "design",
         description: "Diseño de flyers promocionales para servicio de autolavado",
-        image: "assets/images/flyers-autos.jpg",
+        image: "assets/fotos/car-lavadero_foto.png",
         link: "https://drive.google.com/file/d/1ZuxWJRhNdwR5q1Zw_uTv738sGmeb7OBe/view?usp=drive_link"
     },
     {
         id: 9,
-        title: "Ilustraciones y Posters - Badminteam",
+        title: "Poster - Badminteam",
         category: "design",
         description: "Pósters y ilustraciones promocionales para equipo de badminton",
-        image: "assets/images/poster-badminteam.jpg",
+        image: "assets/fotos/poster-BADMINTEAM-foto.png",
         link: "https://drive.google.com/file/d/1-FKkRbkq1LaU1cg7-0b3k92Pg3FUnKA8/view?usp=drive_link"
     }
 ];
