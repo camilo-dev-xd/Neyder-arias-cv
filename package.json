@@ -1,0 +1,27 @@
+{
+  "name": "portafolio-neyder-arias",
+  "version": "1.0.0",
+  "description": "Portafolio profesional de Neyder Arias - Desarrollador Web, Diseño Visual y Edición de Vídeo",
+  "author": "Neyder Arias",
+  "license": "MIT",
+  "keywords": [
+    "portafolio",
+    "web",
+    "diseño",
+    "vídeo",
+    "freelancer",
+    "profesional"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neyderarias/portafolio.git"
+  },
+  "homepage": "https://neyderarias.com",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "scripts": {
+    "start": "live-server --port=8000",
+    "dev": "live-server"
+  }
+}

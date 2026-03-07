@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+Disallow: /private/
+
+# Especificar el archivo sitemap
+Sitemap: https://tudominio.com/sitemap.xml
+
+# Rastreo de búsqueda
+Crawl-delay: 1
+Request-rate: 30/60

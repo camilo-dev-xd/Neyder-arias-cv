@@ -1,0 +1,44 @@
+:root {
+    /* Paleta de Colores Azul */
+    --color-primary: #0D47A1;      /* Azul oscuro profesional */
+    --color-secondary: #1565C0;    /* Azul medio */
+    --color-accent: #42A5F5;       /* Azul claro brillante */
+    --color-light-bg: #F0F4FC;     /* Azul muy claro */
+    --color-text-dark: #1A237E;    /* Azul muy oscuro */
+    
+    /* Colores auxiliares */
+    --color-white: #FFFFFF;
+    --color-gray-light: #E8EFF7;
+    --color-gray-medium: #B0BEC5;
+    --color-gray-dark: #455A64;
+    
+    /* Espaciado */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Tipografía */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 2.5rem;
+    --font-size-4xl: 3.5rem;
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 2px rgba(13, 71, 161, 0.1);
+    --shadow-md: 0 4px 6px rgba(13, 71, 161, 0.15);
+    --shadow-lg: 0 10px 25px rgba(13, 71, 161, 0.2);
+    --shadow-xl: 0 20px 40px rgba(13, 71, 161, 0.25);
+    
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
