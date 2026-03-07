@@ -29,7 +29,7 @@ const projects = [
     },
     {
         id: 4,
-        title: "Vídeo Edidt - Autos",
+        title: "Vídeo Edit - Autos",
         category: "video",
         description: "Vídeo profesional editado al ritmo de la música",
         image: "assets/fotos/auto_foto.png",
