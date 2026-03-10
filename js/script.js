@@ -7,7 +7,7 @@ const projects = [
         category: "web",
         description: "Sitio web funcional para restaurante/café con menú interactivo y reservas",
         image: "assets/fotos/gastro-coffe_foto.png",
-        link: "#"
+        link: "https://gastro-coffe.vercel.app"
     },
     {
         id: 2,
@@ -29,9 +29,9 @@ const projects = [
     },
     {
         id: 4,
-        title: "Vídeo Edit - Autos",
-        category: "video",
-        description: "Vídeo profesional editado al ritmo de la música",
+        title: "",
+        category: " ",
+        description: "edicion de video de auto",
         image: "assets/fotos/auto_foto.png",
         link: "https://drive.google.com/file/d/1HP4zTBywxDhI0bx_vV0B1qnw28XxQysj/view?usp=sharing"
     },
@@ -76,6 +76,38 @@ const projects = [
         description: "Pósters y ilustraciones promocionales para equipo de badminton",
         image: "assets/fotos/poster-BADMINTEAM-foto.png",
         link: "https://drive.google.com/file/d/1-FKkRbkq1LaU1cg7-0b3k92Pg3FUnKA8/view?usp=drive_link"
+    },
+    {
+        id: 10,
+        title: "Promo Hamburguesa",
+        category: "design",
+        description: "Diseño publicitario para promoción de hamburguesas con estilo vibrante",
+        image: "assets/fotos/promo hamburgesa_foto.png",
+        link: "assets/fotos/promo hamburgesa_foto.png"
+    },
+    {
+        id: 11,
+        title: "Oferta Laboral",
+        category: "design",
+        description: "Diseño para convocatoria laboral con información clara y profesional",
+        image: "assets/fotos/oferta laboral_foto.png",
+        link: "assets/fotos/oferta laboral_foto.png"
+    },
+    {
+        id: 12,
+        title: "Kobe Bryant - Edit",
+        category: "video",
+        description: "Edición de vídeo tributo a Kobe Bryant con efectos dinámicos",
+        image: "assets/fotos/Kobe Bryant_foto.png",
+        link: "https://drive.google.com/file/d/192dTgdTAUZ-oEYkAJQTyR5pPnadKmNIB/view?usp=drive_link"
+    },
+    {
+        id: 13,
+        title: "Tutorial-Escena 3D ",
+        category: "video",
+        description: "Composición de escena 3D utilizando fondo verde y herramientas de IA",
+        image: "assets/fotos/escena 3D_foto.png",
+        link: "https://drive.google.com/file/d/1tf65g6bByZ4tcCxxLfanrXb-I0OM_xgW/view?usp=sharing"
     }
 ];
 
