@@ -75,7 +75,7 @@ class ParticleSystem {
         // Reducir densidad de partículas en móviles para mejorar rendimiento
         const divisor = window.innerWidth < 768 ? 35000 : 15000;
         const count = Math.floor((this.canvas.width * this.canvas.height) / divisor);
-        
+
         for (let i = 0; i < count; i++) {
             this.particles.push(this.createParticle());
         }
@@ -209,36 +209,24 @@ function initHeroEntrance() {
 
 // ---- INICIALIZACIÓN GENERAL ----
 document.addEventListener('DOMContentLoaded', function () {
-    // Máquina de escribir en el subtítulo hero
     const subtitle = document.querySelector('.hero-subtitle');
+    const heroSection = document.querySelector('.hero');
+
+    // Máquina de escribir en el subtítulo hero
     if (subtitle) {
-        const words = [
-            'Diseño Visual',
-            'Edición de Vídeo',
-            'Desarrollador Web',
-        ];
+        const words = ['Diseño Visual', 'Edición de Vídeo', 'Desarrollador Web'];
         subtitle.textContent = '';
-        new TextRotator(subtitle, words, {
-            displayTime: 2500,
-            fadeTime: 500,
-        });
+        new TextRotator(subtitle, words, { displayTime: 2500, fadeTime: 500 });
     }
 
     // Partículas en el hero
-    const heroSection = document.querySelector('.hero');
     if (heroSection) {
         new ParticleSystem(heroSection);
     }
 
-    // Scroll Reveal de secciones
+    // Inicializar efectos
     initScrollReveal();
-
-    // Contadores de habilidades
     initSkillCounters();
-
-    // Paralaje en hero photo
     initParallaxHero();
-
-    // Animación de entrada hero
     initHeroEntrance();
 });

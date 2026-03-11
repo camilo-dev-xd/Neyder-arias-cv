@@ -29,9 +29,9 @@ const projects = [
     },
     {
         id: 4,
-        title: "",
-        category: " ",
-        description: "edicion de video de auto",
+        title: "Coche Deportivo - Edit",
+        category: "video",
+        description: "Edición dinámica de coche deportivo con efectos visuales y sonido",
         image: "assets/fotos/auto_foto.png",
         link: "https://drive.google.com/file/d/1HP4zTBywxDhI0bx_vV0B1qnw28XxQysj/view?usp=sharing"
     },
@@ -103,7 +103,7 @@ const projects = [
     },
     {
         id: 13,
-        title: "Tutorial-Escena 3D ",
+        title: "Tutorial-Escena 3D",
         category: "video",
         description: "Composición de escena 3D utilizando fondo verde y herramientas de IA",
         image: "assets/fotos/escena 3D_foto.png",
@@ -113,141 +113,117 @@ const projects = [
 
 // Esperar a que el DOM esté listo
 document.addEventListener('DOMContentLoaded', function () {
-    // 0. CARGAR SECCIÓN "SOBRE MÍ"
-    loadAboutSection();
+    const navbar = document.querySelector('.navbar');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    // 1. CARGAR PROYECTOS EN LA GALERÍA
+    // Inicialización
+    loadAboutSection();
     loadProjects('all');
 
-    // 2. CONFIGURAR FILTROS
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    // 1. CONFIGURAR FILTROS
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function () {
-            // Remover clase activa de todos los botones
             filterBtns.forEach(b => b.classList.remove('active'));
-            // Agregar clase activa al botón clickeado
             this.classList.add('active');
-            // Cargar proyectos según el filtro
-            const filter = this.getAttribute('data-filter');
-            loadProjects(filter);
+            loadProjects(this.getAttribute('data-filter'));
         });
     });
 
-    // 3. MENÚ HAMBURGUESA
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-
+    // 2. MENÚ HAMBURGUESA
     hamburger.addEventListener('click', function () {
         navMenu.classList.toggle('active');
-        hamburger.classList.toggle('active');
+        this.classList.toggle('active');
     });
 
     // Cerrar menú al hacer clic en un link
-    const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        link.addEventListener('click', function () {
+        link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
         });
     });
 
-    // 4. NAVEGACIÓN CON SCROLL
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 50) {
-            navbar.style.boxShadow = '0 2px 10px rgba(13, 71, 161, 0.1)';
-        } else {
-            navbar.style.boxShadow = 'none';
-        }
+    // 3. NAVEGACIÓN CON SCROLL
+    let lastScrollPos = 0;
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
 
-        // Mostrar u ocultar barra basado en el scroll
-        let currentScrollY = window.scrollY;
-        if (typeof window.lastScrollPos === 'undefined') window.lastScrollPos = currentScrollY;
+        // Sombra del navbar
+        navbar.style.boxShadow = currentScrollY > 50 ? '0 2px 10px rgba(13, 71, 161, 0.1)' : 'none';
 
-        if (currentScrollY > window.lastScrollPos && currentScrollY > 100) {
-            // Bajando el scroll
+        // Mostrar / Ocultar navbar con scroll
+        if (currentScrollY > lastScrollPos && currentScrollY > 100) {
             navbar.classList.add('hidden');
-            const hamburgerMenu = document.querySelector('.hamburger');
-            const navMenuEl = document.querySelector('.nav-menu');
-            if (hamburgerMenu) hamburgerMenu.classList.remove('active');
-            if (navMenuEl) navMenuEl.classList.remove('active');
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
         } else {
-            // Subiendo el scroll
             navbar.classList.remove('hidden');
         }
-        window.lastScrollPos = currentScrollY;
+        lastScrollPos = currentScrollY;
     });
 
-    // 5. MOSTRAR NAVBAR AL ACERCAR EL CURSOR A LA PARTE SUPERIOR
-    document.addEventListener('mousemove', function (e) {
-        if (e.clientY < 60 && navbar.classList.contains('hidden')) {
-            navbar.classList.remove('hidden');
-        }
+    // Mostrar navbar al acercar el cursor arriba
+    document.addEventListener('mousemove', (e) => {
+        if (e.clientY < 60) navbar.classList.remove('hidden');
     });
+
+    // 4. PREVENIR DESCARGA DE IMÁGENES
+    const preventAction = (e) => {
+        if (e.target.tagName === 'IMG' || e.target.closest('.portfolio-card')) {
+            e.preventDefault();
+        }
+    };
+    document.addEventListener('contextmenu', preventAction);
+    document.addEventListener('dragstart', preventAction);
 });
+
 // FUNCIÓN PARA CARGAR SECCIÓN "SOBRE MÍ"
 function loadAboutSection() {
     const aboutText = document.querySelector('.about-text');
     const skillsContainer = document.querySelector('.skills');
 
-    // Texto sobre mí
+    if (!aboutText || !skillsContainer) return;
+
     aboutText.innerHTML = `
         <p>Soy un profesional creativo con experiencia en <strong>diseño gráfico, edición de vídeo y desarrollo web</strong>. Me apasiona crear soluciones digitales innovadoras que combinen estética y funcionalidad.</p>
         <p>Mi enfoque se centra en la adaptabilidad y el aprendizaje continuo, utilizando herramientas modernas como Adobe Creative Suite, WordPress e IA para entregar proyectos de calidad.</p>
     `;
 
-    // Habilidades técnicas
-    const technicalSkills = [
-        'Adobe Premiere Pro',
-        'Adobe Illustrator',
-        'Adobe Photoshop',
-        'HTML & CSS',
-        'WordPress',
-        'ChatGPT / IA',
-        'Diseño Digital',
-    ];
+    const technicalSkills = ['Adobe Premiere Pro', 'Adobe Illustrator', 'Adobe Photoshop', 'HTML & CSS', 'WordPress', 'ChatGPT / IA', 'Diseño Digital'];
 
-    // Crear HTML de habilidades
-    let skillsHTML = `
+    skillsContainer.innerHTML = `
         <div class="skills-group">
             <h3>Habilidades Técnicas</h3>
             <div class="skill-tags">
-    `;
-
-    technicalSkills.forEach(skill => {
-        skillsHTML += `<span class="skill-tag technical">${skill}</span>`;
-    });
-
-    skillsHTML += `
+                ${technicalSkills.map(skill => `<span class="skill-tag technical">${skill}</span>`).join('')}
             </div>
         </div>
     `;
-
-    skillsContainer.innerHTML = skillsHTML;
 }
 
 // FUNCIÓN PARA CARGAR PROYECTOS
 function loadProjects(filter) {
     const portfolioGrid = document.getElementById('portfolio-grid');
-    portfolioGrid.innerHTML = ''; // Limpiar galería
+    if (!portfolioGrid) return;
 
-    // Filtrar proyectos
+    portfolioGrid.innerHTML = '';
+
     const filteredProjects = filter === 'all'
         ? projects
         : projects.filter(project => project.category === filter);
 
-    // Crear tarjetas de proyectos
+    const fragment = document.createDocumentFragment();
+
     filteredProjects.forEach(project => {
-        // Crear enlace que funciona como tarjeta completa
         const projectLink = document.createElement('a');
         projectLink.href = project.link;
         projectLink.target = '_blank';
         projectLink.rel = 'noopener noreferrer';
         projectLink.className = 'portfolio-card';
-        projectLink.dataset.category = project.category;
         projectLink.style.backgroundImage = `url('${project.image}')`;
-
-        // Crear contenido que se muestra encima de la imagen
         projectLink.innerHTML = `
             <div class="portfolio-overlay"></div>
             <div class="portfolio-content">
@@ -255,20 +231,8 @@ function loadProjects(filter) {
                 <p class="portfolio-description">${project.description}</p>
             </div>
         `;
-
-        portfolioGrid.appendChild(projectLink);
+        fragment.appendChild(projectLink);
     });
+
+    portfolioGrid.appendChild(fragment);
 }
-
-// PREVENIR DESCARGA DE IMÁGENES (Click derecho y Arrastrar)
-document.addEventListener('contextmenu', function (e) {
-    if (e.target.tagName === 'IMG' || e.target.closest('.portfolio-card') || e.target.classList.contains('portfolio-card')) {
-        e.preventDefault();
-    }
-});
-
-document.addEventListener('dragstart', function (e) {
-    if (e.target.tagName === 'IMG' || e.target.closest('.portfolio-card') || e.target.classList.contains('portfolio-card')) {
-        e.preventDefault();
-    }
-});
